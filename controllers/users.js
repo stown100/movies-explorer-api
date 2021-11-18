@@ -13,7 +13,7 @@ const createUser = (req, res, next) => {
   bcrypt.hash(password, 10)
     .then((password) => {
       User.create({
-        name, email, password
+        name, email, password,
       })
         .then((user) => {
           const newUser = user.toObject();
@@ -38,50 +38,50 @@ const createUser = (req, res, next) => {
 const getUserMe = (req, res, next) => {
   const id = req.user._id;
   User.find({ _id: id })
-  .orFail(() => {
-    throw new NotFound('Пользователя с таким id не существует');
-  })
-  .then((user) => {
-    if (user) {
-      res.send(user);
-    } else {
-      next(new NotFound('Пользователя с таким id не существует'));
-    }
-  })
-  .catch((err) => {
-    if (err.name === 'CastError') {
-      next(new CastError('Переданны некорректные данные'));
-    }
-    const error = new Error('На сервере произошла ошибка');
-    error.statusCode = 500;
-    return next(error);
-  });
-}
+    .orFail(() => {
+      throw new NotFound('Пользователя с таким id не существует');
+    })
+    .then((user) => {
+      if (user) {
+        res.send(user);
+      } else {
+        next(new NotFound('Пользователя с таким id не существует'));
+      }
+    })
+    .catch((err) => {
+      if (err.name === 'CastError') {
+        next(new CastError('Переданны некорректные данные'));
+      }
+      const error = new Error('На сервере произошла ошибка');
+      error.statusCode = 500;
+      return next(error);
+    });
+};
 
 const updateUser = (req, res, next) => {
   const userId = req.user._id;
   const { name, email } = req.body;
   User.findByIdAndUpdate(userId, { name, email }, { new: true, runValidators: true })
-  .orFail(() => {
-    throw new NotFound('Пользователя с таким id не существует');
-  })
-  .then((user) => {
-    if (user) {
-      res.send(user);
-    } else {
-      next(new CastError('Переданны некорректные данные'));
-    }
-  })
-  .catch((err) => {
-    if (err.name === 'CastError' || err.name === 'ValidationError') {
-      next(new CastError('Переданны некорректные данные'));
-    }
-    const error = new Error('На сервере произошла ошибка');
-    error.statusCode = 500;
-    return next(error);
-  })
-  .catch(next);
-}
+    .orFail(() => {
+      throw new NotFound('Пользователя с таким id не существует');
+    })
+    .then((user) => {
+      if (user) {
+        res.send(user);
+      } else {
+        next(new CastError('Переданны некорректные данные'));
+      }
+    })
+    .catch((err) => {
+      if (err.name === 'CastError' || err.name === 'ValidationError') {
+        next(new CastError('Переданны некорректные данные'));
+      }
+      const error = new Error('На сервере произошла ошибка');
+      error.statusCode = 500;
+      return next(error);
+    })
+    .catch(next);
+};
 
 const login = (req, res, next) => {
   const { email, password } = req.body;
@@ -109,6 +109,8 @@ const login = (req, res, next) => {
     .catch((err) => {
       next(new AuthorizedError(err.message));
     });
-}
+};
 
-module.exports = { createUser, getUserMe, updateUser, login };
+module.exports = {
+  createUser, getUserMe, updateUser, login,
+};

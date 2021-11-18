@@ -5,19 +5,31 @@ const CastError = require('../errors/CastError');
 
 const getMovies = (req, res, next) => {
   Movie.find({})
-    .then(movie => res.send(movie))
+    .then((movie) => res.send(movie))
     .catch(next);
-}
+};
 
 const createMovie = (req, res, next) => {
   const {
-    country, director, duration, year, description, image, trailer, nameRu, nameEn, thumbnail, movieId
+    country, director, duration, year, description,
+    image, trailer, nameRu, nameEn, thumbnail, movieId,
   } = req.body;
   const owner = req.user._id;
   Movie.create({
-    country, director, duration, year, description, image, trailer, nameRu, nameEn, thumbnail, movieId, owner
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailer,
+    nameRu,
+    nameEn,
+    thumbnail,
+    movieId,
+    owner,
   })
-    .then(movie => res.send(movie))
+    .then((movie) => res.send(movie))
     .catch((err) => {
       if (err.message === 'Validation failed' || err.name === 'ValidationError') {
         next(new CastError('Переданы некорректные данные при создании карточки'));
@@ -27,7 +39,7 @@ const createMovie = (req, res, next) => {
       return next(error);
     })
     .catch(next);
-}
+};
 
 const deleteMovie = (req, res, next) => {
   const movieById = req.user._id;
@@ -63,6 +75,6 @@ const deleteMovie = (req, res, next) => {
       return next(error);
     })
     .catch(next);
-}
+};
 
 module.exports = { getMovies, createMovie, deleteMovie };
