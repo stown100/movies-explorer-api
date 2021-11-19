@@ -16,6 +16,8 @@ mongoose.connect('mongodb://localhost:27017/moviesdb', {
   autoIndex: true, // make this also true
 });
 
+require('dotenv').config();
+
 app.use(express.json());
 
 // модуль helmet для установки заголовков, связанных с безопасностью
