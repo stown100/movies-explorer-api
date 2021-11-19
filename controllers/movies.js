@@ -32,47 +32,40 @@ const createMovie = (req, res, next) => {
     .then((movie) => res.send(movie))
     .catch((err) => {
       if (err.message === 'Validation failed' || err.name === 'ValidationError') {
-        next(new CastError('Переданы некорректные данные при создании карточки'));
+        throw new CastError('Переданы некорректные данные при создании карточки');
       }
-      const error = new Error('На сервере произошла ошибка');
-      error.statusCode = 500;
-      return next(error);
+      return next(err);
     })
     .catch(next);
 };
 
 const deleteMovie = (req, res, next) => {
   const movieById = req.user._id;
-  Movie.findById({
+  Movie.findOne({
     _id: req.params.movieId,
     owner: movieById,
   })
     .then((movie) => {
       if (!movie) {
-        next(new NotFound('Нет фильма по заданному id'));
+        throw new NotFound('Нет фильма по заданному id');
       }
-      if (movie.owner.toString() === movieById.toString()) {
-        Movie.findOneAndRemove({
-          _id: req.params.movieId,
-          owner: movieById,
-        })
-          .then((movieRes) => {
-            res.send(movieRes);
-          });
-      } else {
-        next(new ForbiddenError('Фильм добавили не вы!'));
+      if (movie.owner.toString() !== movieById.toString()) {
+        throw new ForbiddenError('Фильм добавили не вы!');
       }
+      return Movie.findOneAndRemove({
+        _id: req.params.movieId,
+        owner: movieById,
+      })
+        .then((movieRes) => res.send(movieRes));
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new CastError('Невалидный id'));
+        throw new CastError('Невалидный id');
       }
       if (err.message === 'NotFound') {
-        next(new NotFound('Нет карточки/пользователя по заданному id'));
+        throw new NotFound('Нет карточки/пользователя по заданному id');
       }
-      const error = new Error('На сервере произошла ошибка');
-      error.statusCode = 500;
-      return next(error);
+      return next(err);
     })
     .catch(next);
 };

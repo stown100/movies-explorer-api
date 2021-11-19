@@ -1,9 +1,7 @@
-const { celebrate, Joi } = require('celebrate');
 const express = require('express');
 const mongoose = require('mongoose');
-const { login, createUser } = require('./controllers/users');
-const routesUsers = require('./routes/users');
-const routerMovies = require('./routes/movies');
+const { errors } = require('celebrate');
+const helmet = require('helmet');
 const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -13,38 +11,30 @@ const PORT = 3000;
 const app = express();
 
 // подключаемся к серверу mongo
-mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
+mongoose.connect('mongodb://localhost:27017/moviesdb', {
   useNewUrlParser: true,
   autoIndex: true, // make this also true
 });
 
 app.use(express.json());
 
+// модуль helmet для установки заголовков, связанных с безопасностью
+app.use(helmet());
+
 app.use(requestLogger); // подключаем логгер запросов
 
-app.post('/signin', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().email({ tlds: { allow: false } }),
-    password: Joi.string().required(),
-  }),
-}), login);
-
-app.post('/signup', celebrate({
-  body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    email: Joi.string().email({ tlds: { allow: false } }),
-    password: Joi.string().required(),
-  }),
-}), createUser);
+app.use(require('./routes'));
 
 app.use(auth);
 
-app.use('/users', routesUsers);
-app.use('/movies', routerMovies);
+app.use(require('./routes/users'));
+app.use(require('./routes/movies'));
 
 app.all('*', (req, res, next) => next(new NotFound('Ресурс не найден')));
 
 app.use(errorLogger); // подключаем логгер ошибок
+
+app.use(errors());
 
 app.use(errorHandler);
 

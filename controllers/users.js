@@ -8,12 +8,17 @@ const ConflictError = require('../errors/ConflictError');
 
 const createUser = (req, res, next) => {
   const { name, email, password } = req.body;
-  User.findOne({ email });
-  // хешируем пароль
-  bcrypt.hash(password, 10)
-    .then((password) => {
+  User.findOne({ email })
+    .then((user) => {
+      if (user) {
+        throw new ConflictError('При регистрации указан email, который уже существует на сервере');
+      }
+      // хешируем пароль
+      return bcrypt.hash(password, 10);
+    })
+    .then((hash) => {
       User.create({
-        name, email, password,
+        name, email, password: hash,
       })
         .then((user) => {
           const newUser = user.toObject();
@@ -22,17 +27,15 @@ const createUser = (req, res, next) => {
         })
         .catch((err) => {
           if (err.name === 'ValidationError') {
-            next(new CastError('Переданны некорректные данные'));
+            throw new CastError('Переданны некорректные данные');
           }
           if (err.name === 'MongoServerError' || err.message === 'Validation failed') {
-            next(new ConflictError('При регистрации указан email, который уже существует на сервере'));
+            throw new ConflictError('При регистрации указан email, который уже существует на сервере');
           }
-          const error = new Error('На сервере произошла ошибка');
-          error.statusCode = 500;
-          return next(error);
-        })
-        .catch(next);
-    });
+          return next(err);
+        });
+    })
+    .catch(next);
 };
 
 const getUserMe = (req, res, next) => {
@@ -45,16 +48,14 @@ const getUserMe = (req, res, next) => {
       if (user) {
         res.send(user);
       } else {
-        next(new NotFound('Пользователя с таким id не существует'));
+        throw new NotFound('Пользователя с таким id не существует');
       }
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new CastError('Переданны некорректные данные'));
+        throw new CastError('Переданны некорректные данные');
       }
-      const error = new Error('На сервере произошла ошибка');
-      error.statusCode = 500;
-      return next(error);
+      return next(err);
     });
 };
 
@@ -69,16 +70,14 @@ const updateUser = (req, res, next) => {
       if (user) {
         res.send(user);
       } else {
-        next(new CastError('Переданны некорректные данные'));
+        throw new CastError('Переданны некорректные данные');
       }
     })
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
-        next(new CastError('Переданны некорректные данные'));
+        throw new CastError('Переданны некорректные данные');
       }
-      const error = new Error('На сервере произошла ошибка');
-      error.statusCode = 500;
-      return next(error);
+      return next(err);
     })
     .catch(next);
 };
@@ -89,14 +88,14 @@ const login = (req, res, next) => {
   User.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
-        next(new AuthorizedError('Неправильные почта или пароль'));
+        throw new AuthorizedError('Неправильные почта или пароль');
       }
       userId = user._id;
       return bcrypt.compare(password, user.password);
     })
     .then((matched) => {
       if (!matched) {
-        next(new AuthorizedError('Неправильные почта или пароль'));
+        throw new AuthorizedError('Неправильные почта или пароль');
       }
       // аутентификация успешна
       const token = jwt.sign(
@@ -106,9 +105,7 @@ const login = (req, res, next) => {
       );
       res.send({ token });
     })
-    .catch((err) => {
-      next(new AuthorizedError(err.message));
-    });
+    .catch((err) => next(new AuthorizedError(err.message)));
 };
 
 module.exports = {

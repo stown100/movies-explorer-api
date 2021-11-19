@@ -1,17 +1,17 @@
-const { errors, celebrate, Joi } = require('celebrate');
+const { celebrate, Joi } = require('celebrate');
 const router = require('express').Router();
 
 const { getUserMe, updateUser } = require('../controllers/users');
 
-router.get('/me', getUserMe);
+router.get('/users/me', getUserMe);
 
-router.patch('/me', celebrate({
+router.patch('/users/me', celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    email: Joi.string().email(),
+    name: Joi.string().min(2).max(30).required(),
+    email: Joi.string().email().required(),
   }),
 }), updateUser);
 
-router.use(errors());
+// router.use(errors());
 
 module.exports = router;
