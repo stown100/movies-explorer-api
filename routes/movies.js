@@ -15,7 +15,7 @@ router.post('/movies', celebrate({
     description: Joi.string().required().regex(/[\wа-я.:!?"«»;@%№()*#,ё\s]/i),
     nameRU: Joi.string().required().regex(/[а-я.:!?"«»;@%№()*#,ё\s]/i),
     nameEN: Joi.string().required().regex(/[\w.:!?"«»;@%№()*#,\s]/i),
-    movieId: Joi.string().required(),
+    movieId: Joi.number().required(),
     image: Joi.string().required().custom((value, helper) => {
       if (validator.isURL(value, { require_protocol: true })) {
         return value;
@@ -39,7 +39,7 @@ router.post('/movies', celebrate({
 
 router.delete('/movies/:movieId', celebrate({
   params: Joi.object().keys({
-    cardId: Joi.string().hex().length(24)
+    movieId: Joi.string().hex().length(24)
       .required(),
   }),
 }), deleteMovie);

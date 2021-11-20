@@ -8,35 +8,52 @@ const ConflictError = require('../errors/ConflictError');
 
 const createUser = (req, res, next) => {
   const { name, email, password } = req.body;
-  User.findOne({ email })
+  bcrypt.hash(password, 10).then((hash) => User.create({
+    name, email, password: hash,
+  })
     .then((user) => {
-      if (user) {
+      const newUser = user.toObject();
+      delete newUser.password;
+      res.send(newUser);
+    })
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        throw new CastError('Переданны некорректные данные');
+      }
+      if (err.code === 11000) {
         throw new ConflictError('При регистрации указан email, который уже существует на сервере');
       }
-      // хешируем пароль
-      return bcrypt.hash(password, 10);
-    })
-    .then((hash) => {
-      User.create({
-        name, email, password: hash,
-      })
-        .then((user) => {
-          const newUser = user.toObject();
-          delete newUser.password;
-          res.send(newUser);
-        })
-        .catch((err) => {
-          if (err.name === 'ValidationError') {
-            throw new CastError('Переданны некорректные данные');
-          }
-          if (err.name === 'MongoServerError' || err.message === 'Validation failed') {
-            throw new ConflictError('При регистрации указан email, который уже существует на сервере');
-          }
-          return next(err);
-        });
-    })
+      return next(err);
+    }))
     .catch(next);
 };
+
+// const createUser = (req, res, next) => {
+//   const { name, email, password } = req.body;
+//   User.findOne({ email })
+//     .then(() => bcrypt.hash(password, 10))
+//     .then((hash) => {
+//       User.create({
+//         name, email, password: hash,
+//       })
+//         .then((user) => {
+//           const newUser = user.toObject();
+//           delete newUser.password;
+//           res.send(newUser);
+//         })
+//         .catch((err) => {
+//           if (err.name === 'ValidationError') {
+//             throw new CastError('Переданны некорректные данные');
+//           }
+//           if (err.name === 'MongoServerError' || err.message === 'Validation failed') {
+//             throw new
+// ConflictError('При регистрации указан email, который уже существует на сервере');
+//           }
+//           return next(err);
+//         });
+//     })
+//     .catch(next);
+// };
 
 const getUserMe = (req, res, next) => {
   const id = req.user._id;
@@ -74,6 +91,9 @@ const updateUser = (req, res, next) => {
       }
     })
     .catch((err) => {
+      if (err.name === 'DuplicateKey') {
+        throw new ConflictError('Такой email уже существует');
+      }
       if (err.name === 'CastError' || err.name === 'ValidationError') {
         throw new CastError('Переданны некорректные данные');
       }
@@ -88,13 +108,14 @@ const login = (req, res, next) => {
   User.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
-        throw new AuthorizedError('Неправильные почта или пароль');
+        throw new CastError('Переданны некорректные данные');
       }
       userId = user._id;
       return bcrypt.compare(password, user.password);
     })
     .then((matched) => {
       if (!matched) {
+        console.log('2');
         throw new AuthorizedError('Неправильные почта или пароль');
       }
       // аутентификация успешна
@@ -105,7 +126,7 @@ const login = (req, res, next) => {
       );
       res.send({ token });
     })
-    .catch((err) => next(new AuthorizedError(err.message)));
+    .catch(next);
 };
 
 module.exports = {

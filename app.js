@@ -2,12 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
-const auth = require('./middlewares/auth');
-const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFound = require('./errors/NotFound');
 
-const PORT = 3000;
+const { PORT = 3000 } = process.env;
 const app = express();
 
 // подключаемся к серверу mongo
@@ -18,6 +16,8 @@ mongoose.connect('mongodb://localhost:27017/moviesdb', {
 
 require('dotenv').config();
 
+app.use(require('./middlewares/rateLimit'));
+
 app.use(express.json());
 
 // модуль helmet для установки заголовков, связанных с безопасностью
@@ -27,7 +27,8 @@ app.use(requestLogger); // подключаем логгер запросов
 
 app.use(require('./routes'));
 
-app.use(auth);
+// все роуты ниже, требуют авторизации
+app.use(require('./middlewares/auth'));
 
 app.use(require('./routes/users'));
 app.use(require('./routes/movies'));
@@ -38,7 +39,7 @@ app.use(errorLogger); // подключаем логгер ошибок
 
 app.use(errors());
 
-app.use(errorHandler);
+app.use(require('./middlewares/errorHandler'));
 
 app.listen(PORT, () => {
   console.log(`Порт: ${PORT}`);
