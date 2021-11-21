@@ -91,7 +91,7 @@ const updateUser = (req, res, next) => {
       }
     })
     .catch((err) => {
-      if (err.name === 'DuplicateKey') {
+      if (err.code === 11000) {
         throw new ConflictError('Такой email уже существует');
       }
       if (err.name === 'CastError' || err.name === 'ValidationError') {
