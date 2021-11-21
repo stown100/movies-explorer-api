@@ -3,9 +3,9 @@ const validator = require('validator');
 const { celebrate, Joi } = require('celebrate');
 const { getMovies, createMovie, deleteMovie } = require('../controllers/movies');
 
-router.get('/movies', getMovies);
+router.get('/api/movies', getMovies);
 
-router.post('/movies', celebrate({
+router.post('/api/movies', celebrate({
   body: Joi.object().keys({
     country: Joi.string().required().regex(/[\wа-яё\s]/i).min(3)
       .max(60),
@@ -37,7 +37,7 @@ router.post('/movies', celebrate({
   }),
 }), createMovie);
 
-router.delete('/movies/:movieId', celebrate({
+router.delete('api//movies/:movieId', celebrate({
   params: Joi.object().keys({
     movieId: Joi.string().hex().length(24)
       .required(),

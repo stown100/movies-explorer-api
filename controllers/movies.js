@@ -1,7 +1,7 @@
 const Movie = require('../models/movie');
 const ForbiddenError = require('../errors/ForbiddenError');
 const NotFound = require('../errors/NotFound');
-const CastError = require('../errors/CastError');
+const BadRequestError = require('../errors/BadRequestError');
 
 const getMovies = (req, res, next) => {
   Movie.find({})
@@ -32,7 +32,7 @@ const createMovie = (req, res, next) => {
     .then((movie) => res.send(movie))
     .catch((err) => {
       if (err.message === 'Validation failed' || err.name === 'ValidationError') {
-        throw new CastError('Переданы некорректные данные при создании карточки');
+        throw new BadRequestError('Переданы некорректные данные при создании карточки');
       }
       return next(err);
     })
@@ -57,7 +57,7 @@ const deleteMovie = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        throw new CastError('Невалидный id');
+        throw new BadRequestError('Невалидный id');
       }
       if (err.message === 'NotFound') {
         throw new NotFound('Нет карточки/пользователя по заданному id');
