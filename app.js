@@ -17,14 +17,14 @@ mongoose.connect(NODE_ENV === 'production' ? DATA_BASE : 'mongodb://localhost:27
 
 require('dotenv').config();
 
-app.use(require('./middlewares/rateLimit'));
-
 app.use(express.json());
 
 // модуль helmet для установки заголовков, связанных с безопасностью
 app.use(helmet());
 
 app.use(requestLogger); // подключаем логгер запросов
+
+app.use(require('./middlewares/rateLimit'));
 
 app.use(require('./routes'));
 
