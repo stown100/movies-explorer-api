@@ -65,7 +65,7 @@ const updateUser = (req, res, next) => {
     })
     .catch((err) => {
       if (err.code === 11000) {
-        throw new ConflictError('Такой email уже существует');
+        throw new ConflictError('Такой email уже существует!!!');
       }
       if (err.name === 'CastError' || err.name === 'ValidationError') {
         throw new BadRequestError('Переданны некорректные данные');
