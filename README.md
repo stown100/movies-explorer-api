@@ -1,1 +1,1 @@
-# movies-explorer-api
+## Ссылка на сервер: https://myfilms.nomoredomains.rocks 
