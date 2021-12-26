@@ -1,0 +1,36 @@
+.about-project__text-block_text {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    width: 550px;
+    margin: 0;
+    grid-row-start: 2;
+}
+
+
+@media (min-width: 881px) and (max-width: 1200px) {
+    .about-project__text-block_text {
+        max-width: 400px;
+    }
+}
+
+@media (min-width: 750px) and (max-width: 880px) {
+    .about-project__text-block_text {
+        width: 319px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 750px) {
+    .about-project__text-block_text {
+        max-width: 289px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 700px) {
+    .about-project__text-block_text {
+        grid-row-start: auto;
+        width: 284px;
+    }
+}

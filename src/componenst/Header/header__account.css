@@ -1,0 +1,18 @@
+.header__account {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    background: #313131;
+    border-radius: 20px;
+    padding: 8px 20px;
+    border: 0;
+    cursor: pointer;
+}
+
+.header__account:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,17 @@
+.movies-card__elem {
+    max-width: 270px;
+    background-color: #222222;
+    border-radius: 10px;
+}
+
+@media (min-width: 767px) and (max-width: 880px) {
+    .movies-card__elem {
+        max-width: 339px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .movies-card__elem {
+        max-width: 300px;
+    }
+}

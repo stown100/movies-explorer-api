@@ -1,0 +1,14 @@
+@media (min-width: 769px) {
+    .burger {
+        visibility: hidden;
+    }
+}
+
+.burger {
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    width: 28px;
+    height: 44px;
+    cursor: pointer;
+}

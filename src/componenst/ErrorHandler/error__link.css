@@ -1,0 +1,19 @@
+.error__link {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #4285F4;
+    margin: 184px 0 0 0;
+    text-decoration: none;
+    background: 0;
+    border: none;
+    cursor: pointer;
+}
+
+@media (min-width: 320px) and (max-width: 700px) {
+    .error__link {
+        margin: 284px 0 0 0;
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

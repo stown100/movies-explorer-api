@@ -1,0 +1,15 @@
+@media (min-width: 520px) and (max-width: 769px) {
+    .burger__block_text {
+        display: flex;
+        flex-direction: column;
+        margin: 159px auto 621px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 520px) {
+    .burger__block_text {
+        display: flex;
+        flex-direction: column;
+        margin: 159px auto 621px;
+    }
+}

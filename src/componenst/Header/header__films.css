@@ -1,0 +1,16 @@
+.header__films {
+    background-color: #202020;
+    border: 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: right;
+    color: #FFFFFF;
+    padding: 0;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.header__black_films:hover {
+    opacity: 0.8;
+}

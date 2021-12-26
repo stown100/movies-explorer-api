@@ -1,0 +1,21 @@
+.portfolio__title {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+    color: #8B8B8B;
+    margin: 0 auto 50px;
+}
+
+@media (min-width: 700px) and (max-width: 880px) {
+    .portfolio__title {
+        margin: 0 auto 50px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 699px) {
+    .portfolio__title {
+        font-size: 14px;
+        line-height: 20px;
+        margin: 0 auto 40px;
+    }
+}

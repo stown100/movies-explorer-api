@@ -1,0 +1,27 @@
+.filter-checkbox {
+    background-color: #202020;
+    border: 0;
+    padding: 0;
+    margin-top: 32px;
+    display: flex;
+    align-content: space-between;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0 70px 47px;
+}
+
+@media (min-width: 700px) and (max-width: 880px) {
+    .filter-checkbox {
+        flex-direction: row-reverse;
+        padding: 0 30px 60px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 700px)  {
+    .filter-checkbox {
+        margin: -1px auto;
+        padding: 0 0 50px;
+        flex-direction: row-reverse;
+        justify-content: center;
+    }
+}

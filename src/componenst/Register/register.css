@@ -1,0 +1,22 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-top: 70px;
+    background-color: #202020;
+}
+
+
+@media (min-width: 700px) and (max-width: 880px) {
+    .register {
+        padding-top: 232px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 700px) {
+    .register {
+        padding-top: 56px;
+    }
+}

@@ -1,0 +1,32 @@
+@media (min-width: 520px) and (max-width: 769px) {
+    .burger__block_text-text {
+        background-color: #202020;
+        border: 0;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: #FFFFFF;
+        padding: 0;
+        margin: 0 auto 28px;
+    }
+    .burger__block_text-text:last-of-type {
+        margin: 0 auto 0;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 520px) {
+    .burger__block_text-text {
+        background-color: #202020;
+        border: 0;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: #FFFFFF;
+        padding: 0;
+        margin: 0 auto 28px;
+        cursor: pointer;
+    }
+    .burger__block_text-text:last-of-type {
+        margin: 0 auto 0;
+    }
+}

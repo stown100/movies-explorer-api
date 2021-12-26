@@ -1,0 +1,24 @@
+.about-me__me_title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    margin: 0 auto 26px;
+}
+
+@media (min-width: 700px) and (max-width: 880px) {
+    .about-me__me_title {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0 auto 20px;
+    }
+}
+
+
+@media (min-width: 320px) and (max-width: 699px) {
+    .about-me__me_title {
+        max-width: 292px;
+        font-size: 11px;
+        line-height: 16px;
+        margin: 0 auto 20px;
+    }
+}

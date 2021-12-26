@@ -1,0 +1,6 @@
+@media (min-width: 320px) and (max-width: 500px) {
+    .register__text_login {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

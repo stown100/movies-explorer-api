@@ -1,0 +1,36 @@
+.footer__bot_buttons-child {
+    border: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    margin-right: 20px;
+    height: 16px;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    cursor: pointer;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.footer__bot_buttons-child:hover {
+    opacity: 0.8;
+}
+
+.footer__bot_buttons-child:last-of-type {
+    margin-right: 0;
+}
+
+@media (min-width: 700px) and (max-width: 880px) {
+    .footer__bot_buttons-child:last-of-type {
+        margin-right: 30px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 700px) {
+    .footer__bot_buttons-child {
+        margin: 0 auto 12px;
+    }
+    .footer__bot_buttons-child:last-of-type {
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,33 @@
+@media (min-width: 769px) {
+    .burger__block {
+        display: none;
+    }
+}
+
+@media (min-width: 520px) and (max-width: 769px) {
+    .burger__block {
+        background: #202020;
+        width: 520px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding-bottom: 90px;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.5s, opacity 0.5s ease-in-out;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 520px) {
+    .burger__block {
+        background: #202020;
+        width: 320px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding-bottom: 90px;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.5s, opacity 0.5s ease-in-out;
+    }
+}

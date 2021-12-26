@@ -1,0 +1,6 @@
+@media (min-width: 320px) and (max-width: 500px) {
+    .register__logo {
+        display: block;
+        margin: 0 auto;
+    }
+}

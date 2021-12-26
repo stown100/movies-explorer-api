@@ -1,0 +1,11 @@
+.form__text-input {
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #8B8B8B;
+    margin: 24px auto 5px;
+}
+
+.form__text-input:first-of-type {
+    margin: 0 auto 5px;
+}

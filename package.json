@@ -1,48 +1,39 @@
 {
-  "name": "movies-explorer-api",
+  "name": "movies-explorer-frontend",
   "version": "0.1.0",
   "private": true,
-  "description": "`/routes` — папка с файлами роутера  \r `/controllers` — папка с файлами контроллеров пользователя и карточки   \r `/models` — папка с файлами описания схем пользователя и карточки",
-  "main": "app.js",
-  "scripts": {
-    "lint": "npx eslint .",
-    "start": "node app.js",
-    "dev": "nodemon app.js"
-  },
-  "author": "Sergey Borodulin",
-  "license": "ISC",
-  "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.24.2",
-    "nodemon": "^2.0.15"
-  },
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "celebrate": "^15.0.0",
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "express-rate-limit": "^5.5.1",
-    "express-winston": "^4.2.0",
-    "helmet": "^4.6.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongod": "^2.0.0",
-    "mongoose": "^6.0.13",
-    "validator": "^13.7.0",
-    "winston": "^3.3.3"
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": []
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/stown100/express-mesto.git"
-  },
-  "bugs": {
-    "url": "https://github.com/stown100/express-mesto/issues"
-  },
-  "homepage": "https://github.com/stown100/express-mesto#readme"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

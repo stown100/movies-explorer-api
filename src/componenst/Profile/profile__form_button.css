@@ -1,0 +1,14 @@
+.profile__form_button {
+    margin: 220px auto 0;
+    background-color: #202020;
+    border: 0;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.profile__form_button:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,17 @@
+.portfolio {
+    background-color: #202020;
+    color: #FFFFFF;
+    padding: 101px 70px 125px;
+}
+
+@media (min-width: 700px) and (max-width: 880px) {
+    .portfolio {
+        padding: 91px 50px 90px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 699px) {
+    .portfolio {
+        padding: 69px 4.375% 70px;
+    }
+}

@@ -1,0 +1,18 @@
+.promo {
+    max-height: 574px;
+    background-color: #073042;
+}
+
+@media (min-width: 700px) and (max-width: 1150px) {
+    .promo {
+        max-height: 850px;
+        padding-bottom: 76px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 700px) {
+    .promo {
+        max-height: 710px;
+        padding-bottom: 30px;
+    }
+}

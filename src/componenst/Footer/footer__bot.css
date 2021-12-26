@@ -1,0 +1,14 @@
+.footer__bot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 36px;
+}
+
+@media (min-width: 320px) and (max-width: 700px) {
+    .footer__bot {
+        display: flex;
+        flex-direction: column;
+        max-height: 124px;
+    }
+}

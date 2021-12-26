@@ -1,0 +1,15 @@
+.register__text {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #8B8B8B;
+    margin: 0;
+}
+
+@media (min-width: 320px) and (max-width: 500px) {
+    .register__text {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

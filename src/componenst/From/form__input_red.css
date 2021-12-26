@@ -1,0 +1,12 @@
+.form__input_red {
+    background-color: #202020;
+    border: 0;
+    border-bottom: 1px solid #424242;
+    padding: 0 0 10px 0;
+    margin: 5px auto 0;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #EE3465;
+    width: 100%;
+}

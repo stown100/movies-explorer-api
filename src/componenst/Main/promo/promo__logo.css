@@ -1,0 +1,26 @@
+.promo__logo {
+    max-width: 310px;
+    max-height: 304px;
+    margin: 75px 70px 195px 190px;
+    float: right;
+}
+
+@media (min-width: 700px) and (max-width: 1150px) {
+    .promo__logo {
+        margin: 0 auto 48px;
+        padding-top: 140px;
+        float: none;
+        display: block;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 700px) {
+    .promo__logo {
+        max-width: 210px;
+        max-height: 206px;
+        margin: 0 auto 44px;
+        display: block;
+        float: none;
+        padding-top: 70px;
+    }
+}

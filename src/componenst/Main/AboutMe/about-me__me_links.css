@@ -1,0 +1,15 @@
+.about-me__me_links {
+    display: flex;
+    max-width: 132px;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+@media (min-width: 320px) and (max-width: 699px) {
+    .about-me__me_links {
+        margin: 40px auto 0;
+        max-width: 138px;
+        max-width: 292;
+        padding-right: 154px;
+    }
+}

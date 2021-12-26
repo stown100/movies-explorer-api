@@ -1,0 +1,22 @@
+.header-main__authorized_button {
+    border: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.header-main__authorized_button:hover {
+    opacity: 0.8;
+}
+
+@media (min-width: 320px) and (max-width: 450px) {
+    .header-main__authorized_button {
+        font-size: 10px;
+        line-height: 16px;
+    }
+}

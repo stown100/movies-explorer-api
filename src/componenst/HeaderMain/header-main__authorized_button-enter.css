@@ -1,0 +1,11 @@
+.header-main__authorized_button-enter {
+    padding: 8px 20px;
+    background-color: #3DDC84;
+    border-radius: 3px;
+}
+
+@media (min-width: 320px) and (max-width: 450px) {
+    .header-main__authorized_button-enter {
+        padding: 5px 12px;
+    }
+}

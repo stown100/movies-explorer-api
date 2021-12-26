@@ -1,0 +1,5 @@
+.movies-card__elem_title {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 12px;
+}

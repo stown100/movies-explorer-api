@@ -1,0 +1,39 @@
+@media (min-width: 700px) and (max-width: 880px) {
+    .filter-checkbox__button_of {
+        margin: 0 0 0 16px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 700px) {
+    .filter-checkbox__button_of {
+        margin: 0 0 0 13px;
+    }
+}
+
+
+.filter-checkbox__button_of {
+    display: flex;
+    width: 36px;
+    height: 20px;
+    border-radius: 19px;
+    background: #bfbfbf;
+    z-index: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition-duration: 300ms;
+}
+
+.filter-checkbox__button_of::after {
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 17px;
+    background: #fff;
+    top: 2px;
+    left: 0;
+    transition-duration: 300ms;
+    position: absolute;
+    z-index: 1;
+}

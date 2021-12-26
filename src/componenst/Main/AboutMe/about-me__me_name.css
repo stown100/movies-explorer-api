@@ -1,0 +1,23 @@
+.about-me__me_name {
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 58px;
+    margin: 66px auto 18px;
+}
+
+@media (min-width: 700px) and (max-width: 880px) {
+    .about-me__me_name {
+        font-size: 40px;
+        line-height: 40px;
+        margin: 66px auto 16px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 699px) {
+    .about-me__me_name {
+        max-width: 292px;
+        font-size: 30px;
+        line-height: 36px;
+        margin: 0 auto 20px;
+    }
+}

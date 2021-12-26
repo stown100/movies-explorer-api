@@ -1,0 +1,15 @@
+.error__text {
+    margin: 5px 0 0 0;
+    color: #FFFFFF;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+@media (min-width: 320px) and (max-width: 700px) {
+    .error__text {
+        font-size: 12px;
+        line-height: 15px;
+        margin: 10px 0 0 0; 
+    }
+}

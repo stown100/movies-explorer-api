@@ -1,0 +1,21 @@
+.form__button {
+    background: #4285F4;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    padding: 13px 126px 15px 124px;
+    color: #FFFFFF;
+    border: 0;
+    margin: 134px auto 16px;
+    width: 100%;
+    cursor: pointer;
+}
+
+@media (min-width: 320px) and (max-width: 500px) {
+    .form__button {
+        padding: 15px 68px 15px 67px;
+        margin: 172px auto 29px;
+    }
+}

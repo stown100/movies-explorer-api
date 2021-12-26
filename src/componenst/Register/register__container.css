@@ -1,0 +1,10 @@
+.register__container {
+    max-width: 396px;
+}
+
+@media (min-width: 320px) and (max-width: 500px) {
+    .register__container {
+        max-width: 260px;
+        margin: 0 auto;
+    }
+}

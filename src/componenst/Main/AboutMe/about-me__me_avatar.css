@@ -1,0 +1,24 @@
+.about-me__me_avatar {
+    max-width: 270px;
+    max-height: 327px;
+    float: right;
+    border-radius: 10px;
+}
+
+@media (min-width: 700px) and (max-width: 880px) {
+    .about-me__me_avatar {
+        max-width: 255px;
+        max-height: 307px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 699px) {
+    .about-me__me_avatar {
+        float: none;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto 40px;
+        max-width: 292px;
+        max-height: 352px;
+    }
+}

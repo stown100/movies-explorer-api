@@ -1,0 +1,8 @@
+.movies-card__elem_time {
+    font-size: 11px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #8B8B8B;
+    margin: 0 auto 14px 12px;
+}

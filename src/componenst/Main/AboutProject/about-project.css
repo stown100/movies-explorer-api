@@ -1,0 +1,17 @@
+.about-project {
+    background-color: #202020;
+    padding: 0 70px;
+    color: #FFFFFF;
+}
+
+@media (min-width: 700px) and (max-width: 1200px) {
+    .about-project {
+        padding: 0 50px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 700px) {
+    .about-project {
+        padding: 0 18px;
+    }
+}

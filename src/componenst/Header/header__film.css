@@ -1,0 +1,10 @@
+.header__film {
+    display: flex;
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+    .header__black_film {
+        visibility: hidden;
+        display: none;
+    }
+}

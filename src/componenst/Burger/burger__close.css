@@ -1,0 +1,21 @@
+@media (min-width: 520px) and (max-width: 769px) {
+    .burger__close {
+        width: 22px;
+        height: 22px;
+        margin-top: 22.44px;
+        margin-right: 22.44px;
+        float: right;
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 520px) {
+    .burger__close {
+        width: 22px;
+        height: 22px;
+        margin-top: 22.44px;
+        margin-right: 22.44px;
+        float: right;
+        cursor: pointer;
+    }
+}

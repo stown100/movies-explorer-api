@@ -1,0 +1,27 @@
+.movies-card__elem_title-button {
+    border-radius: 50px;
+    background-color: #313131;
+    border: 2px solid #FFF;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+.movies-card__elem_title-button:hover {
+    opacity: 0.8;
+}
+
+.movies-card__elem_title-button-on {
+    border-radius: 50px;
+    background-color: #2BE080;
+    border: 2px solid #FFF;
+    width: 16px;
+    height: 16px;
+    transition-duration: 300ms;
+    cursor: pointer;
+}
+
+.movies-card__elem_title-button-on:hover {
+    opacity: 0.8;
+}

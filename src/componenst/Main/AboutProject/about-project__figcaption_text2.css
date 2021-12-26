@@ -1,0 +1,28 @@
+.about-project__figcaption_text2 {
+    margin: 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #A0A0A0;
+    width: 912px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 700px) and (max-width: 880px) {
+    .about-project__figcaption_text2 {
+        width: 528px;
+        height: 17px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 700px) {
+    .about-project__figcaption_text2 {
+        font-size: 11px;
+        line-height: 13px;
+        width: 184px;
+        height: 13px;
+    }
+}
