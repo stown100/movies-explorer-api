@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const helmet = require('helmet');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFound = require('./errors/NotFound');
@@ -8,6 +9,25 @@ const NotFound = require('./errors/NotFound');
 const { PORT = 3000 } = process.env;
 const { DATA_BASE, NODE_ENV } = process.env;
 const app = express();
+
+const corsOptions = {
+  origin: [
+    'https://graduatework.nomoredomains.rocks/api',
+    'http://graduatework.nomoredomains.rocks/api',
+    'https://graduatework.nomoredomains.rocks',
+    'http://graduatework.nomoredomains.rocks',
+    'https://localhost:3000',
+    'http://localhost:3000',
+    'localhost:3000',
+  ],
+  methods: ['PUT', 'GET', 'POST', 'PATCH', 'DELETE', 'HEAD'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization', 'Accept'],
+  credentials: true,
+};
+
+app.use('*', cors(corsOptions));
 
 // подключаемся к серверу mongo
 mongoose.connect(NODE_ENV === 'production' ? DATA_BASE : 'mongodb://localhost:27017/moviesdb', {
