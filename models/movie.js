@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const regex = /https?:\/\/(www\.)?[-\w@:%\\+~#=]{1,256}\.[a-z0-9()]{1,6}\b([-\w()@:%\\+~#=//?&]*)/i;
 
+const regex1 = /^(https?:\/\/)?([\w.]+)\.([a-z]{2,6}\.?)(\/[\w.]*)*\/?$/;
+
 const movieSchema = new mongoose.Schema({
   // страна создания фильма
   coyntry: {
@@ -34,7 +36,7 @@ const movieSchema = new mongoose.Schema({
     require: true,
     validate: {
       validator(val) {
-        return val.match(regex);
+        return val.match(regex1);
       },
       message: 'Введите валидный url',
     },
