@@ -3,6 +3,10 @@ const validator = require('validator');
 const { celebrate, Joi } = require('celebrate');
 const { getMovies, createMovie, deleteMovie } = require('../controllers/movies');
 
+const { isURL } = validator;
+
+const isUrlCustomValidator = (value, helpers) => (isURL(value) ? value : helpers.message('Это поле заполнено некорректно, ожидается URL') && false);
+
 router.get('/api/movies', getMovies);
 
 router.post('/api/movies', celebrate({
@@ -16,24 +20,9 @@ router.post('/api/movies', celebrate({
     nameRU: Joi.string().required().regex(/[а-я.:!?"«»;@%№()*#,ё\s]/i),
     nameEN: Joi.string().required().regex(/[\w.:!?"«»;@%№()*#,\s]/i),
     movieId: Joi.number().required(),
-    image: Joi.string().required().custom((value, helper) => {
-      if (validator.isURL(value, { require_protocol: true })) {
-        return value;
-      }
-      return helper.message('Невалидный url');
-    }),
-    trailer: Joi.string().required().custom((value, helper) => {
-      if (validator.isURL(value, { require_protocol: true })) {
-        return value;
-      }
-      return helper.message('Невалидный url');
-    }),
-    thumbnail: Joi.string().required().custom((value, helper) => {
-      if (validator.isURL(value, { require_protocol: true })) {
-        return value;
-      }
-      return helper.message('Невалидный url');
-    }),
+    image: Joi.string().required().custom(isUrlCustomValidator),
+    trailer: Joi.string().required().custom(isUrlCustomValidator),
+    thumbnail: Joi.string().required().custom(isUrlCustomValidator),
   }),
 }), createMovie);
 
