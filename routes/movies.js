@@ -20,7 +20,7 @@ router.post('/api/movies', celebrate({
     nameRU: Joi.string().required().regex(/[а-я.:!?"«»;@%№()*#,ё\s]/i),
     nameEN: Joi.string().required().regex(/[\w.:!?"«»;@%№()*#,\s]/i),
     movieId: Joi.number().required(),
-    image: Joi.string().required(),
+    image: Joi.string().required().custom(isUrlCustomValidator),
     trailer: Joi.string().required().custom(isUrlCustomValidator),
     thumbnail: Joi.string().required().custom(isUrlCustomValidator),
   }),
