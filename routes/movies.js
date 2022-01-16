@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const validator = require('validator');
 const { celebrate, Joi } = require('celebrate');
-const { getMovies, createMovie, deleteMovie } = require('../controllers/movies');
+const {
+  getMovies, createMovie, deleteMovie,
+} = require('../controllers/movies');
 
 const { isURL } = validator;
 
@@ -26,9 +28,16 @@ router.post('/api/movies', celebrate({
   }),
 }), createMovie);
 
-router.delete('/api/movies/:movieId', celebrate({
+// router.delete('/api/movies/:_id', celebrate({
+//   params: Joi.object().keys({
+//     _id: Joi.string().hex().length(24)
+//       .required(),
+//   }),
+// }), deleteMovie);
+
+router.delete('/api/movies/:_id', celebrate({
   params: Joi.object().keys({
-    movieId: Joi.string().hex().length(24)
+    _id: Joi.number()
       .required(),
   }),
 }), deleteMovie);

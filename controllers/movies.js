@@ -41,7 +41,7 @@ const createMovie = (req, res, next) => {
 
 const deleteMovie = (req, res, next) => {
   const movieById = req.user._id;
-  Movie.findOne({ _id: req.params.movieId })
+  Movie.findOne({ movieId: req.params._id })
     .then((movie) => {
       if (!movie) {
         throw new NotFound('Нет фильма по заданному id');
@@ -50,7 +50,7 @@ const deleteMovie = (req, res, next) => {
         throw new ForbiddenError('Фильм добавили не вы!');
       }
       return Movie.findOneAndRemove({
-        _id: req.params.movieId,
+        _id: movie._id,
         owner: movieById,
       })
         .then((movieRes) => res.send(movieRes));
