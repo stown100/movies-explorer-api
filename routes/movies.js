@@ -3,6 +3,7 @@ const validator = require('validator');
 const { celebrate, Joi } = require('celebrate');
 const {
   getMovies, createMovie, deleteMovie,
+  likeMovie,
 } = require('../controllers/movies');
 
 const { isURL } = validator;
@@ -41,5 +42,11 @@ router.delete('/api/movies/:_id', celebrate({
       .required(),
   }),
 }), deleteMovie);
+
+router.put('/api/movies/:_id', celebrate({
+  params: Joi.object().keys({
+    _id: Joi.number(),
+  }),
+}), likeMovie);
 
 module.exports = router;
