@@ -12,6 +12,7 @@ const app = express();
 
 const corsOptions = {
   origin: [
+    'https://api.nomoreparties.co/beatfilm-movies',
     'https://graduatework.nomoredomains.rocks/api',
     'http://graduatework.nomoredomains.rocks/api',
     'https://graduatework.nomoredomains.rocks',
