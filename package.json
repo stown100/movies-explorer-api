@@ -2,14 +2,15 @@
   "name": "movies-explorer-api",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://stown100.github.io/movies-explorer-api",
   "description": "`/routes` — папка с файлами роутера  \r `/controllers` — папка с файлами контроллеров пользователя и карточки   \r `/models` — папка с файлами описания схем пользователя и карточки",
   "main": "app.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "lint": "npx eslint .",
     "start": "node app.js",
-    "dev": "nodemon app.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "dev": "nodemon app.js"
   },
   "author": "Sergey Borodulin",
   "license": "ISC",
@@ -17,6 +18,7 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
+    "gh-pages": "^4.0.0",
     "nodemon": "^2.0.15"
   },
   "dependencies": {
@@ -41,10 +43,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stown100/express-mesto.git"
+    "url": "git+https://github.com/stown100/movies-explorer-api.git"
   },
   "bugs": {
-    "url": "https://github.com/stown100/express-mesto/issues"
-  },
-  "homepage": "https://github.com/stown100/express-mesto#readme"
+    "url": "https://github.com/stown100/movies-explorer-api/issues"
+  }
 }
