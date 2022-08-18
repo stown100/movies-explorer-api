@@ -52,8 +52,7 @@ app.use(require('./middlewares/rateLimit'));
 
 app.use(require('./routes'));
 
-// все роуты ниже, требуют авторизации
-app.use(require('./middlewares/auth'));
+app.use(require('./middlewares/auth')); // все роуты ниже, требуют авторизации
 
 app.use(require('./routes/users'));
 app.use(require('./routes/movies'));
