@@ -23,6 +23,7 @@ const corsOptions = {
     'http://localhost:3001',
     'https://localhost:3001',
     'localhost:3001',
+    'https://hidden-harbor-00158.herokuapp.com/',
   ],
   methods: ['PUT', 'GET', 'POST', 'PATCH', 'DELETE', 'HEAD'],
   preflightContinue: false,
