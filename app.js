@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFound = require('./errors/NotFound');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 8080 } = process.env;
 const { DATA_BASE, NODE_ENV } = process.env;
 const app = express();
 
@@ -69,9 +69,6 @@ app.use(require('./middlewares/errorHandler'));
 //   console.log(`69 строка Порт: ${PORT}`);
 // });
 
-app.listen(process.env.PORT || PORT);
-
-// const server = app.listen(PORT || 3000, () => {
-//   const { port } = server.address();
-//   console.log(`Express is working on port ${port}`);
-// })
+app.listen(process.env.PORT || PORT, () => {
+  console.log(`69 строка Порт: ${PORT}`);
+});
