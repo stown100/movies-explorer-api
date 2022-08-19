@@ -65,11 +65,11 @@ app.use(errors());
 
 app.use(require('./middlewares/errorHandler'));
 
-// app.listen(PORT, () => {
-//   console.log(`Порт: ${PORT}`);
-// });
-
-const server = app.listen(PORT || 3000, () => {
-  const { port } = server.address();
-  console.log(`Express is working on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Порт: ${PORT}`);
 });
+
+// const server = app.listen(PORT || 3000, () => {
+//   const { port } = server.address();
+//   console.log(`Express is working on port ${port}`);
+// })
