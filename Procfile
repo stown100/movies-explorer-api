@@ -1,1 +1,0 @@
-web: gunicorn <movies-explorer-api>.wsgi --log-file -
