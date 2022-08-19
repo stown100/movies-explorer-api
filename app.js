@@ -65,9 +65,11 @@ app.use(errors());
 
 app.use(require('./middlewares/errorHandler'));
 
-app.listen(PORT, () => {
-  console.log(`69 строка Порт: ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`69 строка Порт: ${PORT}`);
+// });
+
+app.listen(process.env.PORT || PORT);
 
 // const server = app.listen(PORT || 3000, () => {
 //   const { port } = server.address();
