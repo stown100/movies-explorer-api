@@ -39,10 +39,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stown100/express-mesto.git"
+    "url": "git+https://github.com/stown100/movies-explorer-api.git"
   },
   "bugs": {
-    "url": "https://github.com/stown100/express-mesto/issues"
+    "url": "https://github.com/stown100/movies-explorer-api/issues"
   },
-  "homepage": "https://github.com/stown100/express-mesto#readme"
+  "homepage": "https://github.com/stown100/movies-explorer-api",
+  "engines": {
+    "node": "16.15.0"
+  }
 }

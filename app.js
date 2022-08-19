@@ -66,7 +66,7 @@ app.use(errors());
 app.use(require('./middlewares/errorHandler'));
 
 app.listen(PORT, () => {
-  console.log(`Порт: ${PORT}`);
+  console.log(`69 строка Порт: ${PORT}`);
 });
 
 // const server = app.listen(PORT || 3000, () => {
