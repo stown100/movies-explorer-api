@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFound = require('./errors/NotFound');
 
-const { PORT = 8080 } = process.env;
+const { PORT = 3001 } = process.env;
 const { DATA_BASE, NODE_ENV } = process.env;
 const app = express();
 
@@ -24,6 +24,7 @@ const corsOptions = {
     'https://localhost:3001',
     'localhost:3001',
     'https://hidden-harbor-00158.herokuapp.com',
+    'https://white-elephant-wear.cyclic.app',
   ],
   methods: ['PUT', 'GET', 'POST', 'PATCH', 'DELETE', 'HEAD'],
   preflightContinue: false,
