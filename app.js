@@ -25,6 +25,8 @@ const corsOptions = {
     'localhost:3001',
     'https://hidden-harbor-00158.herokuapp.com',
     'https://white-elephant-wear.cyclic.app',
+    'https://white-elephant-wear.cyclic.app/',
+    'https://white-elephant-wear.cyclic.app/api',
   ],
   methods: ['PUT', 'GET', 'POST', 'PATCH', 'DELETE', 'HEAD'],
   preflightContinue: false,
